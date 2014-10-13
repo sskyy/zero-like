@@ -1,6 +1,6 @@
 module.exports = [{
   identity: 'like',
-  connection: 'myLocalDisk',
+  connection: 'mongo',
   attributes: {
   },
   rest : true
