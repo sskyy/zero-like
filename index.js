@@ -37,7 +37,7 @@ module.exports = {
             }
             updateModel( record )
 
-          }).fail(function(err){
+          }).catch(function(err){
             res.status(500).json({msg:err})
           })
         }else{
@@ -62,22 +62,6 @@ module.exports = {
                   }
                 })
 
-//                models[modelName].update({id:nid},{like:(model.like||0)+1}).then(function(updatedModel){
-//
-//                  if( record ){
-//                    console.log("update a log", record)
-//
-//                    models['like'].update({id:record.id},{count:record.count+1}).then(respond)
-//                  }else{
-//                    console.log("create a log")
-//                    models['like'].create({uid:uid,nid:nid,count:1}).then(respond)
-//                  }
-//
-//                  function respond(){
-//                    console.log("here")
-//                    res.json(updatedModel)
-//                  }
-//                })
               })
             }
           })
@@ -88,6 +72,7 @@ module.exports = {
   bootstrap : {
     "function" : function(){
       this.dep.request.expand(this)
+      console.log("like bootstrap done")
     },
     "order" : {before:"request.bootstrap"}
   }
