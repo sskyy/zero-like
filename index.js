@@ -71,7 +71,6 @@ module.exports = {
   bootstrap : {
     "function" : function(){
       this.dep.request.expand(this)
-      console.log("like bootstrap done")
     },
     "order" : {before:"request.bootstrap"}
   }
