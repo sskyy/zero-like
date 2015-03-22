@@ -21,13 +21,13 @@ module.exports = {
 
     _.forEach( module.like, function( config, modelName){
       root.route['POST /'+modelName+"/:id/like"] = function( req, res){
-        var uid = config.anonymous?req.ip:req.session.user.id,
-          nid = req.param("id")
-
         if( !config.anonymous  && !req.session.user.id){
           console.log( req.session)
           return res.status(403).json({msg:'please login first'})
         }
+
+        var uid = (config.anonymous && !req.session.user.id) ? req.ip:req.session.user.id,
+          nid = req.param("id")
 
         if( config.limit ){
           models['like'].findOne({uid:uid,nid:nid}).then(function(record){
